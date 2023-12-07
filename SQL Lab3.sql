@@ -84,8 +84,8 @@ where rating = 'PG-13';
  order by length desc
  limit 10;
  -- How many days has been the company operating (check DATEDIFF() function)?
-select datediff(now(), rental_date) as days_operating
-from sakila.customer;
+select datediff(max(rental_date), min(rental_date)) as days_operating
+from rental;
 -- Show rental info with additional columns month and weekday. Get 20.
 select *, month(rental_date) as rental_month, weekday(rental_date) as rental_weekday
 from rental
